@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Bloc Jams</title>
+<html ng-app="blocJams">
+    <head lang ="en">
+        <title>Bloc Jams - Angular version</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300">
-        <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300">
+        <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link rel="stylesheet" type="text/css" href="styles/normalize.css">
         <link rel="stylesheet" type="text/css" href="styles/main.css">
         <link rel="stylesheet" type="text/css" href="styles/landing.css">
     </head>
     <body class="landing">
+        {{ 2 + 2 }}
         <nav class="navbar">
             <a href="index.html" class="logo">
                 <img src="assets/images/bloc_jams_logo.png" alt="bloc jams logo">
@@ -18,11 +19,11 @@
                 <a href="collection.html" class="navbar-link">Collection</a>
             </div>
         </nav>
-        
+
         <section class="hero-content">
             <h1 class="hero-title">Turn the music up!</h1>
         </section>
-        
+
         <section class="selling-points container clearfix">
             <div class="point column third">
                 <span class="ion-music-note"></span>
@@ -40,5 +41,7 @@
                 <p class="point-description">Listen to your music on the go. This streaming service is available on all mobile platforms.</p>
             </div>
         </section>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="scripts/app.js"></script>
     </body>
 </html>
