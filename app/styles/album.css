@@ -1,3 +1,10 @@
+body {
+    background-image: url(../assets/images/blurred_backgrounds/blur_bg_3.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+}
 
 .album-cover-art {
     position: relative;

@@ -1,4 +1,4 @@
-body.collection {
+body {
     background-image: url(../assets/images/blurred_backgrounds/blur_bg_2.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -6,10 +6,13 @@ body.collection {
     background-size: cover;
 }
 
-.album-covers {
+.album-covers .container {
     position: relative;
+    margin: 0 auto;
+    max-width:64rem;
 }
 
+/* Pre-Agular, this used to be: .collection-album-info { */
 .collection-album-container {
     position: relative;
     margin-top: 30px;

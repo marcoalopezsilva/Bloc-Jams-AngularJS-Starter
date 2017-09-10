@@ -44,6 +44,7 @@ body.landing {
 }
 
 /* Junior: I had to change the elements' references for next block, to correct styling */
+/* Used to be: .links-container .navbar-link { */
 .landing .navbar .links-container a {
   display: table-cell;
   position: relative;
@@ -63,12 +64,13 @@ body.landing {
 }
 
   /* #5 */
-  .links-container .navbar-link:hover {
+  /* Pre-Angular, this used to be: .links-container .navbar-link:hover {*/
+  .landing .navbar .links-container a:hover  {
     color: rgb(233,50,117);
   }
 
-/* Junior, this is the style definition for checkpoint5-assignment: */
-.links-container .navbar-link:active {
+/* Pre-Angular, this used to be: .links-container .navbar-link:active { */
+  .landing .navbar .links-container a:active  {
     color: rgb(233,50,117);
     background-color: white;
 }
