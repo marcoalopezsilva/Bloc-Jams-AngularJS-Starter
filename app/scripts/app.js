@@ -10,6 +10,7 @@
         $stateProvider
             // When navigating to localhost:3000, the ui-view directive in index.html will load the template associated with the landing state
             .state ('landing', {
+                // Question for Junior: Why is the next line not '/landing' if landing.html is inside the templates folder (as are album.html and collection.html)?
                 url: '/',
                 templateUrl: '/templates/landing.html'
             })
