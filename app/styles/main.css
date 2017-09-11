@@ -22,10 +22,9 @@ body.landing {
 .navbar {
   position:relative;
   padding: 0.5rem;
-  /* #1 */
   background-color: rgba(101,18,95,0.5); /* This creates the light pink/purple zone in which the logo sits */
-  /* #2 */
   z-index: 1;
+  margin-bottom: 20px;
 }
 
 .navbar .logo {
