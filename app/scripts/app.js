@@ -17,6 +17,7 @@
             //Next block is of the Bloc Jams logo which take one to home
             .state ('logo', {
                 url: 'assets/images/bloc_jams_logo.png',
+                templateUrl: '/templates/landing.html'
             })
             // When we navigate to localhost:3000/album, the ui-view directive in the global file will load the album template
             .state ('album', {
