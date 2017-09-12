@@ -12,6 +12,7 @@
             .state ('landing', {
                 // Question for Junior: Why is the next line not '/landing' if landing.html is inside the templates folder (as are album.html and collection.html)?
                 url: '/',
+                controller: 'LandingCtrl as landing',
                 templateUrl: '/templates/landing.html'
             })
             // When we navigate to localhost:3000/album, the ui-view directive in the global file will load the album template
@@ -21,6 +22,7 @@
             })
             .state ('collection', {
                 url: '/collection',
+                controller: 'CollectionCtrl as collection',
                 templateUrl: '/templates/collection.html'
             });
      }
