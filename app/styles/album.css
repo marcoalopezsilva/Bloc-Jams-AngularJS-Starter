@@ -39,6 +39,7 @@ main.album-view {
     margin: 1.5rem auto;
     font-weight: 300;
     font-size: 0.75em;
+    border-collapse: collapse;
 }
 
 .album-view-song-item {

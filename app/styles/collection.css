@@ -38,6 +38,12 @@ main.collection {
     text-decoration: underline;
 }
 
+.album-artist {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+}
 .collection-album-container img {
     width: 80%;
 }
