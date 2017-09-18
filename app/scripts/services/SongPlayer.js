@@ -3,20 +3,23 @@
         var SongPlayer = {};
 
         // currentSong is a private attribute because it is available locally (we declare it within this scope)
-        /* @desc Holds information on the current song
+        /**
+        * @desc Holds information on the current song
         * @type {Object}
         */
         var currentSong = null;
 
-        /**
+
         // currentBuzzObject is declared here, so it is a private (local) attribute
+        /**
         * @desc Buzz object audio file
         * @type {Object}
         */
         var currentBuzzObject = null;
 
-        /**
+
         // setSong is a private function (it is declared here)
+        /**
         * @function setSong
         * @desc Stops currently playing song and loads new audio file as currentBuzzObject
         * @param {Object} song
