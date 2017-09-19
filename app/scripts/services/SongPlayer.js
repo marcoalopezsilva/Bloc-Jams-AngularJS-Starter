@@ -43,6 +43,8 @@
         var playSong = function(song) {
             currentBuzzObject.play();
             song.playing = true;
+            // I introduced next line to monitor what goes on when user clicks
+            console.log("playSong function called on song " + (getSongIndex(song)+1) );
         };
 
         // getSongIndex is a private function
@@ -55,6 +57,21 @@
             return currentAlbum.songs.indexOf(song);
         };
 
+        // stopSong is a private function
+        /**
+        * @function stopSong
+        * @desc Stops the current Buzz object and changes (to false) the song's playing attribute
+        * @param {Object} song
+        */
+        var stopSong = function(song) {
+            currentBuzzObject.stop();
+            // Junior: Instructions for next line state:  song.playing = null;
+            // however, that results in undefined. So I replaced with:
+            SongPlayer.currentSong.playing = null;
+            // I introduced next line to monitor what goes on when user clicks
+            console.log("stopSong function called on song " + (getSongIndex(song)+1) );
+        };
+
         // SongPlayer.currentSong is a public method
         /**
         * @desc Holds information on the current song
@@ -62,8 +79,9 @@
         */
         SongPlayer.currentSong = null;
 
-        // SongPlayer.play is a public method: it is not declared here, and thus is available globally
+        // SongPlayer.play is a public function
         /**
+        * @function play
         * @desc Plays the current song
         * @type {Object}
         */
@@ -74,12 +92,13 @@
                 playSong(song);
             } else if (SongPlayer.currentSong === song) {
                     if (currentBuzzObject.isPaused()) {
-                        currentBuzzObject.play();
+                        playSong(song);
                     }
                 }
         };
 
         /**
+        + @function pause
         * @desc Pauses the current song
         * @type {Object}
         */
@@ -87,6 +106,8 @@
             song = song || SongPlayer.currentSong;
             currentBuzzObject.pause();
             song.playing = false;
+            // I introduced next line to monitor what goes on when user clicks
+            console.log("pause method called on song " + (getSongIndex(song)+1) );
         };
 
         /**
@@ -97,8 +118,24 @@
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex--;
             if (currentSongIndex < 0) {
-                currentBuzzObject.stop();
-                SongPlayer.currentSong.playing = null;
+                stopSong(song);
+            } else {
+                var song = currentAlbum.songs[currentSongIndex];
+                setSong(song);
+                playSong(song);
+            }
+        };
+
+        /**
+        * @desc Goes to the next song
+        * @type {Object}
+        */
+        SongPlayer.next = function() {
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            currentSongIndex++;
+            // Checks if user goes over the album's last song - if so, stops playing
+            if (currentSongIndex >= currentAlbum.songs.length) {
+                stopSong(song);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
