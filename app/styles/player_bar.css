@@ -159,10 +159,10 @@
 
 /* === MOBILE === */
 
-@media (max-width: 40rem) {
+@media (max-width: 640px) {
     .player-bar {
         padding: 1rem;
-        background: rgba(0,0,0,0.6);
+        background-color: rgba(0, 0, 0, 0.6);
     }
 
     .player-bar .main-controls,
@@ -172,27 +172,24 @@
         margin: 0 auto;
         padding: 0;
         width: 100%;
-        text-align: center;   
-    }
-    
-    .player-bar .main-controls {
-        min-height: 3.5rem;
-    }
-    
-    .player-bar .currently-playing {
-        min-height: 2.5rem;
+        text-align: center;
     }
 
+    .player-bar .main-controls,
     .player-bar .volume {
         min-height: 3.5rem;
     }
 
-    .artist-name, 
-    .song-name {
-        display: none;
+    .player-bar .currently-playing {
+        min-height: 2.5rem;
     }
-    
-    .artist-song-mobile {
+
+    .player-bar .artist-name,
+    .player-bar .song-name {
+        display:none;
+    }
+
+    .player-bar .currently-playing .artist-song-mobile {
         display: block;
     }
 }
