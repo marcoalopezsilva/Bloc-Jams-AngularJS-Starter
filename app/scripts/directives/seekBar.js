@@ -48,9 +48,9 @@
                     $document.bind('mousemove.thumb', function (event) {
                         var percent = calculatePercent(seekBar, event);
                         //$scope.$apply() takes a function or an Angular expression string, and executes it, then calls $scope.$digest() to update any bindings or watchers.//
-                        //scope.$apply(function() {
+                        scope.$apply(function() {
                             scope.value = percent * scope.max;
-                        //});
+                        });
                     });
                     $document.bind('mouseup.thumb', function() {
                         $document.unbind('mousemove.thumb');
