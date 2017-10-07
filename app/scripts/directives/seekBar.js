@@ -20,12 +20,24 @@
             // A new "isolate" scope is created for the directive's template.
             // The 'isolate' scope differs from normal scope in that it does not prototypically inherit from its parent scope.
             // This is useful when creating reusable components, which should not accidentally read or modify data in the parent scope.
-            scope: { },
+            scope: {
+                // The & in the isolate scope object is a type of directive scope binding. The & binding type provides a way to execute an expression in the context of the parent scope.
+                onChange: '&'
+            },
             link: function(scope, element, attributes) {
                 scope.value = 0;
                 scope.max = 100;
 
                 var seekBar = $(element);
+
+                // The next section tells Angular to observe changes in the value attribute of scope, and substitute it whenever it changes
+                attributes.$observe('value', function(newValue) {
+                    scope.value = newValue;
+                });
+
+                attributes.$observe('max', function(newValue) {
+                    scope.max = newValue;
+                });
 
                 var percentString = function () {
                      var value = scope.value;
@@ -42,6 +54,7 @@
                 scope.onClickSeekBar = function (event) {
                     var percent = calculatePercent(seekBar, event);
                     scope.value = percent * scope.max;
+                    notifyOnChange(scope.value);
                 };
 
                 scope.trackThumb = function() {
@@ -50,12 +63,19 @@
                         //$scope.$apply() takes a function or an Angular expression string, and executes it, then calls $scope.$digest() to update any bindings or watchers.//
                         scope.$apply(function() {
                             scope.value = percent * scope.max;
+                            notifyOnChange(scope.value);
                         });
                     });
                     $document.bind('mouseup.thumb', function() {
                         $document.unbind('mousemove.thumb');
                         $document.unbind('mouseup.thumb');
                     });
+                };
+
+                var notifyOnChange = function(newValue) {
+                    if (typeof scope.onChange === 'function') {
+                        scope.onChange({value: newValue});
+                    }
                 };
 
                 // This method added for Chekpoint9-Assignment

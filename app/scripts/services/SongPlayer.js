@@ -1,5 +1,5 @@
 (function() {
-    function SongPlayer(Fixtures) {
+    function SongPlayer($rootScope, Fixtures) {
         var SongPlayer = {};
 
         // currentAlbum is a private attribute, because it is declared here
@@ -31,6 +31,15 @@
                 formats: ['mp3'],
                 preload: true
             });
+
+            // The following .bind comes from the Buzz library - allows for attaching event handlers to buzz objects
+            // timeupdate is a HTML5 audio event
+            currentBuzzObject.bind('timeupdate', function() {
+                $rootScope.$apply(function() {
+                    SongPlayer.currentTime = currentBuzzObject.getTime();
+                });
+            });
+
             SongPlayer.currentSong = song;
         };
 
@@ -72,12 +81,28 @@
             console.log("stopSong function called on song " + (getSongIndex(song)+1) );
         };
 
-        // SongPlayer.currentSong is a public method
+        // SongPlayer.currentSong and .currentTime are public methods
         /**
         * @desc Holds information on the current song
         * @type {Object}
         */
         SongPlayer.currentSong = null;
+        /**
+        * @desc Current playback time (in seconds) of currently playing song
+        * @type {Number}
+        */
+        SongPlayer.currentTime = null;
+
+        /**
+        * @function setCurrentTime
+        * @desc Set current time (in seconds) of currently playing song
+        * @param {Number} time
+        */
+        SongPlayer.setCurrentTime = function(time) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setTime(time);
+            }
+        };
 
         // SongPlayer.play is a public function
         /**
@@ -145,7 +170,8 @@
 
         return SongPlayer;
     }
+
     angular
     .module('blocJams')
-    .factory('SongPlayer', ['Fixtures', SongPlayer]);
+    .factory('SongPlayer', ['$rootScope', 'Fixtures', SongPlayer]);
 })();
