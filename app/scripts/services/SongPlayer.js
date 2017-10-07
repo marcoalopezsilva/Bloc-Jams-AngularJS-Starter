@@ -87,11 +87,18 @@
         * @type {Object}
         */
         SongPlayer.currentSong = null;
+
         /**
         * @desc Current playback time (in seconds) of currently playing song
         * @type {Number}
         */
         SongPlayer.currentTime = null;
+
+        /**
+        * @desc Holds current volume
+        * @type {Number}
+        */
+        SongPlayer.volume = null;
 
         /**
         * @function setCurrentTime
@@ -101,6 +108,18 @@
         SongPlayer.setCurrentTime = function(time) {
             if (currentBuzzObject) {
                 currentBuzzObject.setTime(time);
+            }
+        };
+
+        /**
+        * @function setVolume
+        * @desc Sets a new volume level when user cliks on seek bar
+        * @param {Number} newVolume
+        */
+        SongPlayer.setVolume = function(newVolume) {
+            if (currentBuzzObject) {
+                currentBuzzObject.setVolume(newVolume);
+                console.log("Volume now set at " + newVolume);
             }
         };
 
