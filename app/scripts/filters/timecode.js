@@ -1,24 +1,12 @@
 // Filter functions must return another function which takes at least one argument (the input of the filter – seconds)
 (function() {
-    function timecode() {
+    function timecode(SongPlayer) {
         return function(seconds) {
-            var seconds = Number.parseFloat(seconds);
+            var output = buzz.toTimer(seconds)
 
-            if (Number.isNaN(seconds)) {
-                return '--:--';
-            }
-
-            var wholeSeconds = Math.floor(seconds);
-            var minutes = Math.floor(wholeSeconds / 60);
-            var remainingSeconds = wholeSeconds % 60;
-
-            var output = minutes + ':';
-
-            if (remainingSeconds <10) {
-                output += '0';
-            }
-
-            output += remainingSeconds;
+            //if (Number.isNaN(seconds)) {
+            //    return '--:--';
+            //}
 
             return output;
 
@@ -27,5 +15,5 @@
 
     angular
         .module('blocJams')
-        .filter('timecode', timecode);
+        .filter('timecode', ['SongPlayer', timecode]);
 })();
