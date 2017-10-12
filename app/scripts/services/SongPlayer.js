@@ -98,7 +98,8 @@
         * @desc Holds current volume
         * @type {Number}
         */
-        SongPlayer.volume = null;
+        // Note for Junior: This was originally set as 'null', so I guess that was making the volume seekbar to appear at 0 at page load
+        SongPlayer.volume = 50;
 
         /**
         * @function setCurrentTime

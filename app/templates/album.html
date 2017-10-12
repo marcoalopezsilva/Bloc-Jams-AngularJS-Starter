@@ -28,7 +28,8 @@
                     <span class="ion-pause"></span>
                 </a>
             <td class="song-item-title">{{song.title}}</td>
-            <td class="song-item-duration">{{song.duration}}</td>
+            <!-- Note for Junior: I think this wasn't required, but it didn't make sense to keep the songs' duration un-formatted-->
+            <td class="song-item-duration">{{song.duration | timecode}}</td>
         </tr>
      </table>
  </main>
